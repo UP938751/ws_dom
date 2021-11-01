@@ -80,3 +80,27 @@ function findElementById(ID){
 function findElementsByQuery(query){
     return document.querySelectorAll(query)
 }
+
+/* 
+Q14. Function `reverseList` that reverses the content of a UL/OL element. 
+The function should take one parameter, which is a selector used to find the list whose children should be reversed.
+Return the selected element.
+ */
+function reverseList(selector){
+    const listNodes = document.querySelector(selector); //HTML collection
+    const reversedListNodes = Array.prototype.slice.apply(listNodes.children).reverse(); //Array
+    //remove nodes from DOM
+    while (listNodes.childElementCount > 0){
+        for(const child of listNodes.children){
+                child.remove();
+            }
+        }
+    //Add nodes to DOM from reversed node list
+    for(const listItem of reversedListNodes){
+        let newDomElement = document.createElement("li")
+        newDomElement.append(listItem)
+        listNodes.append(newDomElement) 
+    }
+    return listNodes;          
+}
+
