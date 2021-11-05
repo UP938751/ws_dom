@@ -103,4 +103,40 @@ function reverseList(selector){
     }
     return listNodes;          
 }
+/* 
+Q15. Create a function `mover` that accepts two parameters, 
+the first is a selector for the element to move, 
+the second is a selector for the element that it should be appended to.
+*/
 
+function mover(moveSelector, appendSelector) {
+    const moveElement = document.querySelector(moveSelector);
+    let appendElement = document.querySelector(appendSelector);
+    appendElement.append(moveElement);
+}
+
+
+/* 
+Q16. Write a function `filler` that accepts two parameters, 
+the first is a list element that should be added to, 
+the second is an array of strings that will be turned into list items
+*/
+
+function filler(listElement, strArray) {
+    console.log(listElement);
+    for (const str of strArray){
+        const listItem = document.createElement('li');
+        listItem.append(str);
+        listElement.append(listItem);
+    }
+}
+
+/* 
+Q17. Write a function `dupe` that accepts one parameter, a selector. 
+The function should duplicate the element chosen by the selector (and any children of it) inside its parent.
+*/
+
+function dupe(selector){
+    const element = document.querySelectorAll(selector)
+    console.log(element);
+}
