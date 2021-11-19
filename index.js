@@ -80,3 +80,64 @@ function findElementById(ID){
 function findElementsByQuery(query){
     return document.querySelectorAll(query)
 }
+
+//Q14
+function reverseList(selector) {
+    const list = document.querySelector(selector)
+    let reverseList = [];
+    for(const item of list.children){
+        reverseList.push(item.innerHTML);
+    }
+    while (list.hasChildNodes()) {
+        list.removeChild(list.firstChild);
+    } 
+    reverseList = reverseList.reverse()
+    reverseList.forEach(element => {
+        const li = document.createElement("li");
+        li.innerHTML = element;
+        list.appendChild(li);
+    });
+    return list
+}
+
+//Q15
+function mover(moveSelector, appendSelector) {
+    const moveElement = document.querySelector(moveSelector);
+    const appendElement = document.querySelector(appendSelector);
+    appendElement.appendChild(moveElement);
+}
+
+//Q16
+function filler(liElement, strArray){
+    strArray.forEach(str => {
+        const item = document.createElement('li');
+        item.innerHTML = str
+        liElement.appendChild(item)
+    })
+}
+//Q17
+function dupe(selector) {
+    const element = document.querySelector(selector);
+    //element.parentNode.append(element) //- Doesn't work?
+    element.parentNode.append(element.cloneNode(true));
+}
+
+//Q18
+function removeAll(selector) {
+    const nodes = document.querySelectorAll(selector);
+    nodes.forEach(node => node.remove()); //nodelist has foreach method
+}
+
+//Q19
+function getUserData() {
+    const username = document.querySelector('#username').value
+    const speed = parseInt(document.querySelector('#speed').value)
+    const isStudent = document.querySelector('#student').checked
+    const data = 
+    {"name": username,
+     "speed": speed,
+     "student": isStudent
+    }
+    return data;
+
+}
